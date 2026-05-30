@@ -1,7 +1,7 @@
 import express from 'express'
 import { createServer } from 'http'
 import { Server } from 'socket.io'
-import { connectDB, adminModel, dishModel, cartModel, orderModel } from "../../database/dist/index.js"
+import { connectDB, adminModel, dishModel, cartModel, orderModel } from "../../database/src/index.js"
 import bcryptjs from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import Stripe from 'stripe'
