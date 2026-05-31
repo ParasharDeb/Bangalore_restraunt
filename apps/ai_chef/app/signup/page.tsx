@@ -4,6 +4,9 @@ import { Inputbox } from "@repo/ui/input"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import axios from "axios"
+
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080';
+
 export default function Signup(){
     const [username,setusername]=useState("")
     const [password,setpassword]=useState("")
@@ -16,7 +19,7 @@ export default function Signup(){
                 <Inputbox Changehandler={(e)=>{setusername(e.target.value)}} type="text" placeholder="username" Title="Username"/>
                 <Inputbox Changehandler={(e)=>{setpassword(e.target.value)}} type="password" placeholder="password" Title="Password"/>
                 <Inputbox Changehandler={(e)=>{setemail(e.target.value)}} type="text" placeholder="Email" Title="Email"/>
-                <Button children="Signup" clickhandler={()=>{axios.post("http://localhost:8080/api/v1/user/signup",{username,password,email}).then(Response=>{
+                <Button children="Signup" clickhandler={()=>{axios.post(`${API_BASE_URL}/api/v1/user/signup`,{username,password,email}).then(Response=>{
                     Router.push("/signin")
                     console.log(Response)
                 }).catch(error=>{
